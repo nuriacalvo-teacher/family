@@ -723,7 +723,7 @@
         { term: "trust", meaning: "to believe that someone is honest", synonym: "rely on", antonym: "distrust", translation: "confiar", example: "I trust my colleagues to finish the project on time." },
         { term: "argue / row", meaning: "to disagree or fight with words", synonym: "quarrel", antonym: "agree", translation: "discutir", example: "They argued about the schedule all afternoon." },
         { term: "forgive", meaning: "to stop feeling angry with someone", synonym: "pardon", antonym: "blame", translation: "perdonar", example: "I forgive you for being late." },
-        { term: "spoil", meaning: "to give too many things or treats", synonym: "pamper", antonym: "discipline", translation: "consentir, malcriar", example: "Grandparents often spoil their grandchildren." },
+        { term: "spoil", meaning: "to give too many things or treats", synonym: "pamper", antonym: "discipline", translation: "consentir", example: "Grandparents often spoil their grandchildren." },
         { term: "take after", meaning: "to be similar to an older relative", synonym: "resemble", antonym: "differ from", translation: "parecerse", example: "She takes after her mother in looks and personality." },
         { term: "bond", meaning: "strong connection between people", synonym: "connection", antonym: "separation", translation: "vínculo", example: "The bond between siblings can be very strong." },
         { term: "siblings rivalry", meaning: "competition between brothers or sisters", synonym: "competition", antonym: "harmony", translation: "rivalidad fraternal", example: "Siblings rivalry is common among young children." },
@@ -909,28 +909,28 @@
 
     // ==================== ACTIVITY 1: MATCHING (20 terms) ====================
     const activity1Data = [
-      { term: "siblings", answer: "hermanos" },
-      { term: "extended family", answer: "familia extensa" },
-      { term: "nuclear family", answer: "familia nuclear" },
-      { term: "uncle", answer: "tio" },
-      { term: "nephew / niece", answer: "sobrino" },
-      { term: "grandson / granddaughter", answer: "nieto" },
-      { term: "cousin", answer: "primo" },
-      { term: "stepfather", answer: "padrastro" },
-      { term: "husband / wife", answer: "marido" },
-      { term: "brother-in-law", answer: "cunado" },
-      { term: "divorced", answer: "divorciado" },
-      { term: "widow / widower", answer: "viuda" },
-      { term: "single parent", answer: "progenitor unico" },
-      { term: "foster family", answer: "familia de acogida" },
-      { term: "generation gap", answer: "diferencia generacional" },
-      { term: "get along", answer: "llevarse bien" },
-      { term: "look up to", answer: "admirar" },
-      { term: "spoil", answers: ["consentir", "malcriar"], },
-      { term: "take after", answer: "parecerse" },
-      { term: "background", answer: "antecedentes" },
+      { term: "siblings", answers: ["hermanos"] },
+      { term: "extended family", answers: ["familia extensa"] },
+      { term: "nuclear family", answers: ["familia nuclear"] },
+      { term: "uncle", answers: ["tio"] },
+      { term: "nephew / niece", answers: ["sobrino", "sobrina"] },
+      { term: "grandson / granddaughter", answers: ["nieto", "nieta"] },
+      { term: "cousin", answers: ["primo", "prima"] },
+      { term: "stepfather", answers: ["padrastro"] },
+      { term: "husband / wife", answers: ["marido", "esposo", "esposa"] },
+      { term: "brother-in-law", answers: ["cunado"] },
+      { term: "divorced", answers: ["divorciado", "divorciada"] },
+      { term: "widow / widower", answers: ["viuda", "viudo"] },
+      { term: "single parent", answers: ["progenitor unico", "padre soltero", "madre soltera"] },
+      { term: "foster family", answers: ["familia de acogida"] },
+      { term: "generation gap", answers: ["diferencia generacional"] },
+      { term: "get along", answers: ["llevarse bien"] },
+      { term: "look up to", answers: ["admirar"] },
+      { term: "spoil", answers: ["consentir", "malcriar"] },
+      { term: "take after", answers: ["parecerse"] },
+      { term: "background", answers: ["antecedentes", "entorno"] },
     ];
-    
+
     const activity1List = document.getElementById("activity1-list");
     activity1Data.forEach((item, index) => {
       const div = document.createElement("div");
@@ -950,13 +950,14 @@
         const idx = parseInt(input.dataset.idx, 10);
         const fb = document.getElementById(`a1-fb-${idx}`);
         const student = normalize(input.value);
-        const correct = normalize(activity1Data[idx].answer);
-        if (student && student === correct) {
+        const correctList = activity1Data[idx].answers.map(ans => normalize(ans));
+
+        if (student && correctList.includes(student)) {
           score++;
           fb.textContent = "✓ Correct!";
           fb.className = "feedback ok";
         } else {
-          fb.textContent = `✗ Incorrect. Answer: ${activity1Data[idx].answer}`;
+          fb.textContent = `✗ Incorrect. Answers: ${activity1Data[idx].answers.join(" / ")}`;
           fb.className = "feedback error";
         }
       });
