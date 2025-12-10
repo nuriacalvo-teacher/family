@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Family & Relationships Vocabulary Trainer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --primary: #1e88e5;
+      --primary-dark: #1565c0;
+      --accent: #ffb300;
+      --bg: #f5f7fb;
+      --card-bg: #ffffff;
+      --text-main: #1f2933;
+      --text-muted: #6b737c;
+      --danger: #e53935;
+      --success: #43a047;
+      --border-radius: 10px;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text-main);
+    }
+
+    .app-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      padding: 2rem 1.5rem;
+      border-radius: var(--border-radius);
+      color: white;
+    }
+
+    header h1 {
+      margin: 0.5rem 0;
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    header p {
+      margin: 0.3rem 0;
+      font-size: 0.95rem;
+      opacity: 0.95;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.25);
+      color: white;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 1.2rem;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.1);
+    }
+
+    h2 {
+      margin-top: 0;
+      margin-bottom: 0.8rem;
+      font-size: 1.3rem;
+      border-left: 4px solid var(--primary);
+      padding-left: 0.8rem;
+      color: var(--primary-dark);
+    }
+
+    h3 {
+      margin-top: 0;
+      font-size: 1.1rem;
+      color: var(--primary-dark);
+    }
+
+    label {
+      display: block;
+      margin: 0.5rem 0 0.15rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    input[type="text"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 0.5rem 0.7rem;
+      border-radius: 6px;
+      border: 1px solid #cbd2e1;
+      font-size: 0.9rem;
+      transition: border 0.2s, box-shadow 0.2s;
+    }
+
+    input[type="text"]:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.15);
+    }
+
+    button {
+      border: none;
+      border-radius: 999px;
+      padding: 0.6rem 1.3rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin: 0.3rem 0.2rem;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      box-shadow: 0 4px 12px rgba(30, 136, 229, 0.3);
+    }
+
+    .btn-secondary {
+      background: #e3ebff;
+      color: var(--primary-dark);
+    }
+
+    .btn-secondary:hover {
+      background: #c8d9ff;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-muted);
+    }
+
+    .btn-ghost:hover {
+      background: #f0f4ff;
+    }
+
+    .btn-success {
+      background: var(--success);
+      color: white;
+    }
+
+    .btn-success:hover {
+      background: #2e7d32;
+    }
+
+    .layout-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .layout-flex > .col {
+      flex: 1 1 260px;
+      min-width: 0;
+    }
+
+    .muted {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .tab {
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid #cbd2e1;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      background: #f8fafc;
+      color: var(--text-muted);
+      transition: all 0.2s;
+    }
+
+    .tab:hover {
+      border-color: var(--primary);
+      background: #edf2ff;
+    }
+
+    .tab.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0.8rem 0;
+      font-size: 0.85rem;
+    }
+
+    th, td {
+      border-bottom: 1px solid #e1e5f2;
+      padding: 0.6rem 0.5rem;
+      text-align: left;
+    }
+
+    th {
+      background: linear-gradient(135deg, #f0f4ff, #e3ebff);
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+
+    tr:hover {
+      background: #f8fafc;
+    }
+
+    .vocabulary-card {
+      border-radius: 10px;
+      border: 1px solid #e1e5f2;
+      padding: 1rem;
+      margin: 0.8rem 0;
+      background: linear-gradient(135deg, #ffffff, #f8fafc);
+      transition: box-shadow 0.2s;
+    }
+
+    .vocabulary-card:hover {
+      box-shadow: 0 4px 12px rgba(30, 136, 229, 0.15);
+    }
+
+    .vocab-term {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin: 0 0 0.3rem 0;
+    }
+
+    .vocab-meaning {
+      color: var(--text-main);
+      margin: 0.2rem 0;
+      font-size: 0.9rem;
+    }
+
+    .vocab-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 0.3rem 0;
+      font-size: 0.8rem;
+    }
+
+    .vocab-label {
+      font-weight: 600;
+      color: var(--text-muted);
+      min-width: 70px;
+    }
+
+    .vocab-value {
+      color: var(--text-main);
+      flex: 1;
+    }
+
+    .vocab-example {
+      margin-top: 0.4rem;
+      padding: 0.4rem;
+      background: #f0f4ff;
+      border-left: 3px solid var(--primary);
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-style: italic;
+      color: var(--text-main);
+    }
+
+    .badge-syn {
+      display: inline-block;
+      background: #e8f5e9;
+      color: #2e7d32;
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+    }
+
+    .badge-ant {
+      display: inline-block;
+      background: #ffebee;
+      color: #c62828;
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+    }
+
+    .badge-trans {
+      display: inline-block;
+      background: #e3f2fd;
+      color: #1565c0;
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+
+    .flashcard {
+      border-radius: 12px;
+      border: 2px solid var(--primary);
+      padding: 1.2rem;
+      margin: 1rem 0;
+      background: linear-gradient(135deg, #ffffff, #f3f7ff);
+      box-shadow: 0 4px 12px rgba(30, 136, 229, 0.15);
+      min-height: 150px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .flashcard-term {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 0.4rem;
+    }
+
+    .flashcard-translation {
+      font-size: 1.1rem;
+      color: var(--success);
+      margin-bottom: 0.6rem;
+      font-weight: 500;
+    }
+
+    .flashcard-extra {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .score-box {
+      padding: 0.5rem 0.8rem;
+      border-radius: 999px;
+      background: #ecfdf3;
+      color: var(--success);
+      font-size: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-weight: 600;
+    }
+
+    .exercise-item {
+      margin: 0.8rem 0;
+      padding: 0.8rem;
+      border-radius: 8px;
+      background: #f9fafb;
+      border-left: 3px solid var(--primary);
+      transition: box-shadow 0.2s;
+    }
+
+    .exercise-item:hover {
+      box-shadow: 0 2px 6px rgba(30, 136, 229, 0.1);
+    }
+
+    .feedback {
+      font-size: 0.8rem;
+      margin-top: 0.4rem;
+      padding: 0.3rem 0.4rem;
+      border-radius: 4px;
+    }
+
+    .feedback.ok {
+      background: #ecfdf3;
+      color: var(--success);
+      font-weight: 500;
+    }
+
+    .feedback.error {
+      background: #fef2f2;
+      color: var(--danger);
+      font-weight: 500;
+    }
+
+    .results-highlight {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      background: #ecfdf3;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 0.8rem 0;
+      text-align: center;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.3rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid #cbd2e1;
+      font-size: 0.8rem;
+      margin-right: 0.4rem;
+      margin-bottom: 0.3rem;
+      background: #edf2ff;
+      color: var(--primary-dark);
+      font-weight: 500;
+    }
+
+    .category-badge {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.5rem;
+      }
+
+      .card {
+        padding: 0.9rem 1.1rem;
+      }
+
+      table {
+        font-size: 0.8rem;
+      }
+
+      th, td {
+        padding: 0.4rem 0.3rem;
+      }
+
+      .vocab-row {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <header>
+      <div class="badge">📚 English Vocabulary</div>
+      <h1>Family & Relationships Trainer</h1>
+      <p>Learn, memorize, and practice family and relationship vocabulary with interactive flashcards and auto-correcting exercises.</p>
+    </header>
+
+    <!-- STUDENT FORM -->
+    <section class="card" id="student-card">
+      <h2>📋 Student Information</h2>
+      <p class="muted">Please complete your information before starting. This will appear on your final results.</p>
+      <div class="layout-flex">
+        <div class="col">
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" placeholder="e.g. Ana" />
+        </div>
+        <div class="col">
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" placeholder="e.g. García" />
+        </div>
+        <div class="col">
+          <label for="course">Course</label>
+          <select id="course">
+            <option value="">Select your course…</option>
+            <option>3º ESO</option>
+            <option>4º ESO</option>
+            <option>1º Bachillerato</option>
+            <option>2º Bachillerato</option>
+          </select>
+        </div>
+      </div>
+      <div style="margin-top:1rem; text-align:center;">
+        <button class="btn-primary" id="startBtn">🚀 Start Learning</button>
+      </div>
+    </section>
+
+    <!-- MAIN NAVIGATION -->
+    <section class="card hidden" id="nav-card">
+      <h2>📌 Main Menu</h2>
+      <p class="muted">Choose your activity:</p>
+      <div style="display:flex; gap:0.8rem; flex-wrap:wrap;">
+        <button class="btn-secondary" id="goLearning">📖 Learning: Vocabulary & Theory</button>
+        <button class="btn-secondary" id="goExercises">✏️ Exercises: Practice & Test</button>
+      </div>
+    </section>
+
+    <!-- LEARNING SECTION -->
+    <section class="card hidden" id="learning-card">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.8rem; margin-bottom:1rem;">
+        <h2>📖 Learning Section</h2>
+        <button class="btn-ghost" id="backFromLearning">← Back</button>
+      </div>
+      <p class="muted">Browse the vocabulary organized by category. Use the flashcards to test yourself.</p>
+
+      <div class="tabs" id="learningTabs">
+        <button class="tab active" data-tab="direct">Immediate Family</button>
+        <button class="tab" data-tab="extended">Extended Family</button>
+        <button class="tab" data-tab="blended">Blended Families</button>
+        <button class="tab" data-tab="partners">Partners & Legal</button>
+        <button class="tab" data-tab="situations">Situations</button>
+        <button class="tab" data-tab="dynamics">Dynamics & Bonds</button>
+        <button class="tab" data-tab="concepts">Concepts & Idioms</button>
+      </div>
+
+      <!-- IMMEDIATE FAMILY -->
+      <div class="learning-panel" data-panel="direct">
+        <div class="category-badge">Immediate Family</div>
+        <div id="direct-vocab"></div>
+      </div>
+
+      <!-- EXTENDED FAMILY -->
+      <div class="learning-panel hidden" data-panel="extended">
+        <div class="category-badge">Extended Family</div>
+        <div id="extended-vocab"></div>
+      </div>
+
+      <!-- BLENDED FAMILIES -->
+      <div class="learning-panel hidden" data-panel="blended">
+        <div class="category-badge">Blended & Step Families</div>
+        <div id="blended-vocab"></div>
+      </div>
+
+      <!-- PARTNERS & LEGAL -->
+      <div class="learning-panel hidden" data-panel="partners">
+        <div class="category-badge">Partners & Legal Status</div>
+        <div id="partners-vocab"></div>
+      </div>
+
+      <!-- SITUATIONS -->
+      <div class="learning-panel hidden" data-panel="situations">
+        <div class="category-badge">Family Situations</div>
+        <div id="situations-vocab"></div>
+      </div>
+
+      <!-- DYNAMICS & BONDS -->
+      <div class="learning-panel hidden" data-panel="dynamics">
+        <div class="category-badge">Dynamics & Relationships</div>
+        <div id="dynamics-vocab"></div>
+      </div>
+
+      <!-- CONCEPTS & IDIOMS -->
+      <div class="learning-panel hidden" data-panel="concepts">
+        <div class="category-badge">Useful Concepts & Idioms</div>
+        <div id="concepts-vocab"></div>
+      </div>
+
+      <!-- FLASHCARDS -->
+      <div style="margin-top:2rem; padding-top:1.5rem; border-top:2px solid #e1e5f2;">
+        <h3>🎯 Quick Flashcards</h3>
+        <p class="muted">Click the buttons to navigate. Try to remember the translation before revealing it!</p>
+        <div class="flashcard" id="flashcard">
+          <div class="flashcard-term" id="fc-term">siblings</div>
+          <div class="flashcard-translation" id="fc-translation" style="visibility:visible;">hermanos</div>
+          <div class="flashcard-extra" id="fc-extra">Meaning: brothers and sisters</div>
+        </div>
+        <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+          <button class="btn-secondary" id="flashPrev">← Previous</button>
+          <button class="btn-secondary" id="flashNext">Next →</button>
+          <button class="btn-ghost" id="flashToggle">👁️ Hide/Show Translation</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXERCISES SECTION -->
+    <section class="card hidden" id="exercises-card">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.8rem; margin-bottom:1rem;">
+        <h2>✏️ Exercises</h2>
+        <button class="btn-ghost" id="backFromExercises">← Back</button>
+      </div>
+      <p class="muted">Complete all four activities. Your score updates after each check.</p>
+
+      <!-- ACTIVITY 1: MATCHING -->
+      <div class="card" style="margin:1rem 0; background:linear-gradient(135deg, #f8fafc, #edf2ff); border-left:4px solid var(--primary);">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
+          <h3>Activity 1 – Vocabulary Match</h3>
+          <div class="score-box"><span id="score1">0</span>/20 pts</div>
+        </div>
+        <p class="muted">Match each English term with its Spanish translation.</p>
+        <div id="activity1-list"></div>
+        <button class="btn-primary" id="check1">✓ Check Activity 1</button>
+      </div>
+
+      <!-- ACTIVITY 2: FILL IN THE GAPS -->
+      <div class="card" style="margin:1rem 0; background:linear-gradient(135deg, #f8fafc, #edf2ff); border-left:4px solid var(--primary);">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
+          <h3>Activity 2 – Complete the Sentences</h3>
+          <div class="score-box"><span id="score2">0</span>/12 pts</div>
+        </div>
+        <p class="muted">Fill in the blanks with the correct word or expression.</p>
+        <div id="activity2-box" style="margin-bottom:0.8rem;"></div>
+        <div id="activity2-list"></div>
+        <button class="btn-primary" id="check2">✓ Check Activity 2</button>
+      </div>
+
+      <!-- ACTIVITY 3: TRANSLATION ES→EN -->
+      <div class="card" style="margin:1rem 0; background:linear-gradient(135deg, #f8fafc, #edf2ff); border-left:4px solid var(--primary);">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
+          <h3>Activity 3 – Translate to English</h3>
+          <div class="score-box"><span id="score3">0</span>/10 pts</div>
+        </div>
+        <p class="muted">Translate the Spanish expressions into natural English. (5 statements, 2 negatives, 3 questions)</p>
+        <div id="activity3-list"></div>
+        <button class="btn-primary" id="check3">✓ Check Activity 3</button>
+      </div>
+
+      <!-- ACTIVITY 4: SENTENCE TRANSLATION -->
+      <div class="card" style="margin:1rem 0; background:linear-gradient(135deg, #f8fafc, #edf2ff); border-left:4px solid var(--primary);">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
+          <h3>Activity 4 – Sentences & Expressions</h3>
+          <div class="score-box"><span id="score4">0</span>/10 pts</div>
+        </div>
+        <p class="muted">Translate complete sentences into English. Multiple grammatically correct answers are accepted.</p>
+        <div id="activity4-list"></div>
+        <button class="btn-primary" id="check4">✓ Check Activity 4</button>
+      </div>
+
+      <!-- FINAL RESULTS -->
+      <div class="card" style="margin:1rem 0; background:linear-gradient(135deg, #ecfdf3, #c8e6c9);">
+        <h3>📊 Final Results</h3>
+        <p class="muted">After checking all activities, click below to see your total score.</p>
+        <button class="btn-success" id="showFinal">🏆 Show Final Score</button>
+        <div id="finalResults" class="hidden" style="margin-top:1.2rem;">
+          <p class="results-highlight">Total Score: <span id="totalPoints">0</span>/52 points</p>
+          <div style="background:white; padding:1rem; border-radius:8px; margin:0.8rem 0;">
+            <p style="margin:0; font-weight:600; color:var(--primary-dark); font-size:1.1rem;" id="studentSummary"></p>
+          </div>
+          <p class="muted" style="text-align:center; margin-top:1rem;">📸 Take a screenshot to show your teacher!</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // ==================== VOCABULARY DATA ====================
+    const vocabularyData = {
+      direct: [
+        { term: "parents", meaning: "father and mother", synonym: "—", antonym: "children", translation: "padres" },
+        { term: "mother / father", meaning: "female / male parent", synonym: "mom / dad", antonym: "—", translation: "madre / padre", example: "" },
+        { term: "son / daughter", meaning: "male / female child", synonym: "—", antonym: "parent", translation: "hijo / hija" },
+        { term: "siblings", meaning: "brothers and sisters", synonym: "brothers and sisters", antonym: "—", translation: "hermanos" },
+        { term: "brother / sister", meaning: "male / female sibling", synonym: "—", antonym: "—", translation: "hermano / hermana" },
+        { term: "only child", meaning: "person with no siblings", synonym: "—", antonym: "sibling", translation: "hijo único" },
+        { term: "twin", meaning: "one of two children born at the same time", synonym: "—", antonym: "—", translation: "gemelo" },
+      ],
+      extended: [
+        { term: "uncle / aunt", meaning: "brother / sister of your parent", synonym: "—", antonym: "—", translation: "tío / tía" },
+        { term: "cousin", meaning: "child of your uncle or aunt", synonym: "—", antonym: "—", translation: "primo / prima" },
+        { term: "nephew / niece", meaning: "son / daughter of your brother or sister", synonym: "—", antonym: "—", translation: "sobrino / sobrina" },
+        { term: "grandfather / grandmother", meaning: "father / mother of your parent", synonym: "grandpa / grandma", antonym: "—", translation: "abuelo / abuela" },
+        { term: "grandson / granddaughter", meaning: "son / daughter of your child", synonym: "—", antonym: "—", translation: "nieto / nieta" },
+        { term: "great-grandfather / great-grandmother", meaning: "grandparent of your parent", synonym: "—", antonym: "—", translation: "bisabuelo / bisabuela" },
+        { term: "ancestor / descendant", meaning: "person you descend from / person who descends from you", synonym: "forebear / offspring", antonym: "descendant / ancestor", translation: "antepasado / descendiente" },
+        { term: "relatives", meaning: "people in your family", synonym: "family members", antonym: "strangers", translation: "parientes" },
+      ],
+      blended: [
+        { term: "stepfather / stepmother", meaning: "husband / wife of your parent (not biological)", synonym: "—", antonym: "biological parent", translation: "padrastro / madrastra" },
+        { term: "stepson / stepdaughter", meaning: "son / daughter of your partner (not biological)", synonym: "—", antonym: "biological child", translation: "hijastro / hijasta" },
+        { term: "stepbrother / stepsister", meaning: "son / daughter of your stepparent", synonym: "—", antonym: "—", translation: "hermanastro / hermanastra" },
+        { term: "half-brother / half-sister", meaning: "you share one parent but not both", synonym: "—", antonym: "full sibling", translation: "medio hermano / media hermana" },
+        { term: "stepchild", meaning: "child of your partner (not biological)", synonym: "—", antonym: "biological child", translation: "hijastro/a" },
+      ],
+      partners: [
+        { term: "husband / wife", meaning: "married man / woman", synonym: "spouse", antonym: "ex-husband / ex-wife", translation: "marido / esposa" },
+        { term: "partner", meaning: "person you are in a relationship with", synonym: "significant other", antonym: "—", translation: "pareja" },
+        { term: "common-law partner", meaning: "partner you live with without being married", synonym: "cohabiting partner", antonym: "—", translation: "pareja de hecho" },
+        { term: "fiancé / fiancée", meaning: "person you are engaged to", synonym: "—", antonym: "—", translation: "prometido / prometida" },
+        { term: "boyfriend / girlfriend", meaning: "romantic partner (not married)", synonym: "—", antonym: "ex-partner", translation: "novio / novia" },
+        { term: "ex-partner", meaning: "person you used to be in a relationship with", synonym: "former partner", antonym: "current partner", translation: "expareja" },
+        { term: "son-in-law / daughter-in-law", meaning: "your child's husband or wife", synonym: "—", antonym: "—", translation: "yerno / nuera" },
+        { term: "father-in-law / mother-in-law", meaning: "your partner's parent", synonym: "—", antonym: "—", translation: "suegro / suegra" },
+        { term: "brother-in-law / sister-in-law", meaning: "your partner's sibling or sibling's spouse", synonym: "—", antonym: "—", translation: "cuñado / cuñada" },
+      ],
+      situations: [
+        { term: "nuclear family", meaning: "parents and their children", synonym: "immediate family", antonym: "extended family", translation: "familia nuclear" },
+        { term: "extended family", meaning: "includes aunts, uncles, cousins, etc.", synonym: "—", antonym: "nuclear family", translation: "familia extensa" },
+        { term: "immediate family", meaning: "closest family: parents, children, siblings", synonym: "close family", antonym: "distant relatives", translation: "familia directa" },
+        { term: "divorced", meaning: "no longer married", synonym: "separated", antonym: "married", translation: "divorciado" },
+        { term: "separated parents", meaning: "parents who are not living together", synonym: "—", antonym: "together", translation: "padres separados" },
+        { term: "single parent", meaning: "one parent raising a child alone", synonym: "—", antonym: "two-parent family", translation: "progenitor único" },
+        { term: "widow / widower", meaning: "person whose spouse has died", synonym: "—", antonym: "married", translation: "viuda / viudo" },
+        { term: "adopted", meaning: "legally taken into another family", synonym: "—", antonym: "biological", translation: "adoptado" },
+        { term: "foster family", meaning: "family that takes care of a child temporarily", synonym: "—", antonym: "—", translation: "familia de acogida" },
+      ],
+      dynamics: [
+        { term: "bring up", meaning: "to raise a child", synonym: "raise", antonym: "neglect", translation: "criar, educar", example: "They brought up their children to be polite and independent." },
+        { term: "upbringing", meaning: "the way a child is raised", synonym: "raising", antonym: "—", translation: "crianza, educación", example: "Her strict upbringing influenced her disciplined lifestyle." },
+        { term: "get along (with)", meaning: "to have a good relationship", synonym: "get on well", antonym: "fall out", translation: "llevarse bien", example: "I get along really well with my coworkers." },
+        { term: "fall out (with)", meaning: "to stop being friends, argue seriously", synonym: "argue", antonym: "make up", translation: "enemistarse", example: "He fell out with his best friend over money." },
+        { term: "make up", meaning: "to become friends again", synonym: "reconcile", antonym: "fall out", translation: "reconciliarse", example: "After their argument, they made up quickly." },
+        { term: "keep in touch", meaning: "to stay in contact", synonym: "stay in contact", antonym: "lose touch", translation: "mantener el contacto", example: "Even after moving abroad, we keep in touch." },
+        { term: "look up to", meaning: "to admire and respect", synonym: "admire", antonym: "disrespect", translation: "admirar", example: "I've always looked up to my older sister." },
+        { term: "support", meaning: "to help and be there for someone", synonym: "stand by", antonym: "abandon", translation: "apoyar", example: "She supported me during my difficult times." },
+        { term: "encourage", meaning: "to give someone confidence", synonym: "motivate", antonym: "discourage", translation: "animar, motivar", example: "Teachers should encourage students to ask questions." },
+        { term: "trust", meaning: "to believe that someone is honest", synonym: "rely on", antonym: "distrust", translation: "confiar", example: "I trust my colleagues to finish the project on time." },
+        { term: "argue / row", meaning: "to disagree or fight with words", synonym: "quarrel", antonym: "agree", translation: "discutir", example: "They argued about the schedule all afternoon." },
+        { term: "forgive", meaning: "to stop feeling angry with someone", synonym: "pardon", antonym: "blame", translation: "perdonar", example: "I forgive you for being late." },
+        { term: "spoil", meaning: "to give too many things or treats", synonym: "pamper", antonym: "discipline", translation: "consentir", example: "Grandparents often spoil their grandchildren." },
+        { term: "take after", meaning: "to be similar to an older relative", synonym: "resemble", antonym: "differ from", translation: "parecerse", example: "She takes after her mother in looks and personality." },
+        { term: "bond", meaning: "strong connection between people", synonym: "connection", antonym: "separation", translation: "vínculo", example: "The bond between siblings can be very strong." },
+        { term: "siblings rivalry", meaning: "competition between brothers or sisters", synonym: "competition", antonym: "harmony", translation: "rivalidad fraternal", example: "Siblings rivalry is common among young children." },
+        { term: "strict", meaning: "demanding and disciplined", synonym: "demanding", antonym: "lenient", translation: "estricto", example: "His parents are very strict about homework." },
+        { term: "lenient", meaning: "not strict, tolerant", synonym: "tolerant", antonym: "strict", translation: "indulgente", example: "A lenient teacher allows more freedom in class." },
+        { term: "look after", meaning: "to care for someone", synonym: "take care of", antonym: "neglect", translation: "cuidar", example: "She looks after her younger siblings." },
+        { term: "grow up", meaning: "to become an adult", synonym: "mature", antonym: "—", translation: "crecer, hacerse mayor", example: "I grew up in a small village." },
+        { term: "make contact with", meaning: "to reach out to someone", synonym: "reach out to", antonym: "ignore", translation: "contactar con", example: "I made contact with my old friends." },
+        { term: "background", meaning: "family history and social circumstances", synonym: "upbringing", antonym: "—", translation: "antecedentes, entorno", example: "They come from very different backgrounds." },
+      ],
+      concepts: [
+        { term: "family background", meaning: "entorno familiar, social class", synonym: "—", antonym: "—", translation: "antecedentes familiares" },
+        { term: "household", meaning: "people who live together in one home", synonym: "—", antonym: "—", translation: "hogar" },
+        { term: "family bonds", meaning: "strong connections between family members", synonym: "family ties", antonym: "—", translation: "lazos familiares" },
+        { term: "generation gap", meaning: "differences in opinions between old and young", synonym: "—", antonym: "—", translation: "diferencia generacional" },
+        { term: "family reunion", meaning: "large family meeting or party", synonym: "gathering", antonym: "—", translation: "reunión familiar" },
+        { term: "Like father, like son", meaning: "son is similar to his father", synonym: "—", antonym: "—", translation: "De tal palo, tal astilla" },
+        { term: "The apple doesn't fall far from the tree", meaning: "children are like their parents", synonym: "—", antonym: "—", translation: "La manzana no cae lejos del árbol" },
+        { term: "Blood is thicker than water", meaning: "family is more important than others", synonym: "—", antonym: "—", translation: "La sangre es más espesa que el agua" },
+        { term: "Runs in the family", meaning: "a characteristic many family members have", synonym: "—", antonym: "—", translation: "Lo lleva en la sangre" },
+        { term: "Family comes first", meaning: "family is the most important", synonym: "—", antonym: "—", translation: "La familia es lo más importante" },
+        { term: "You can't choose your family", meaning: "must accept family as they are", synonym: "—", antonym: "—", translation: "No puedes escoger a tu familia" },
+      ],
+    };
+
+    // ==================== NORMALIZE FUNCTION ====================
+    function normalize(text) {
+      if (!text) return "";
+      return text
+        .toString()
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-z0-9\s]/g, "")
+        .replace(/\s+/g, " ")
+        .trim();
+    }
+
+    // ==================== RENDER VOCABULARY ====================
+    function renderVocabulary(category, containerId) {
+      const container = document.getElementById(containerId);
+      container.innerHTML = "";
+      vocabularyData[category].forEach(item => {
+        const div = document.createElement("div");
+        div.className = "vocabulary-card";
+        let exampleHtml = "";
+        if (item.example) {
+          exampleHtml = `<div class="vocab-example">Example: "${item.example}"</div>`;
+        }
+        div.innerHTML = `
+          <div class="vocab-term">${item.term}</div>
+          <div class="vocab-meaning"><strong>Meaning:</strong> ${item.meaning}</div>
+          <div class="vocab-row">
+            <span class="vocab-label">Synonym:</span>
+            <span class="vocab-value"><span class="badge-syn">${item.synonym}</span></span>
+          </div>
+          <div class="vocab-row">
+            <span class="vocab-label">Antonym:</span>
+            <span class="vocab-value"><span class="badge-ant">${item.antonym}</span></span>
+          </div>
+          <div class="vocab-row">
+            <span class="vocab-label">Spanish:</span>
+            <span class="vocab-value"><span class="badge-trans">${item.translation}</span></span>
+          </div>
+          ${exampleHtml}
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    // Render all categories
+    renderVocabulary("direct", "direct-vocab");
+    renderVocabulary("extended", "extended-vocab");
+    renderVocabulary("blended", "blended-vocab");
+    renderVocabulary("partners", "partners-vocab");
+    renderVocabulary("situations", "situations-vocab");
+    renderVocabulary("dynamics", "dynamics-vocab");
+    renderVocabulary("concepts", "concepts-vocab");
+
+    // ==================== STUDENT DATA & NAVIGATION ====================
+    const firstNameInput = document.getElementById("firstName");
+    const lastNameInput = document.getElementById("lastName");
+    const courseSelect = document.getElementById("course");
+    const startBtn = document.getElementById("startBtn");
+
+    const studentCard = document.getElementById("student-card");
+    const navCard = document.getElementById("nav-card");
+    const learningCard = document.getElementById("learning-card");
+    const exercisesCard = document.getElementById("exercises-card");
+
+    startBtn.addEventListener("click", () => {
+      if (!firstNameInput.value.trim() || !lastNameInput.value.trim() || !courseSelect.value) {
+        alert("Please fill in your name and select your course.");
+        return;
+      }
+      navCard.classList.remove("hidden");
+      window.scrollTo({ top: navCard.offsetTop - 10, behavior: "smooth" });
+    });
+
+    document.getElementById("goLearning").addEventListener("click", () => {
+      learningCard.classList.remove("hidden");
+      exercisesCard.classList.add("hidden");
+      window.scrollTo({ top: learningCard.offsetTop - 10, behavior: "smooth" });
+    });
+
+    document.getElementById("goExercises").addEventListener("click", () => {
+      exercisesCard.classList.remove("hidden");
+      learningCard.classList.add("hidden");
+      window.scrollTo({ top: exercisesCard.offsetTop - 10, behavior: "smooth" });
+    });
+
+    document.getElementById("backFromLearning").addEventListener("click", () => {
+      learningCard.classList.add("hidden");
+      window.scrollTo({ top: navCard.offsetTop - 10, behavior: "smooth" });
+    });
+
+    document.getElementById("backFromExercises").addEventListener("click", () => {
+      exercisesCard.classList.add("hidden");
+      window.scrollTo({ top: navCard.offsetTop - 10, behavior: "smooth" });
+    });
+
+    // ==================== LEARNING TABS ====================
+    const tabs = document.querySelectorAll(".tab");
+    const panels = document.querySelectorAll(".learning-panel");
+
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        tabs.forEach(t => t.classList.remove("active"));
+        tab.classList.add("active");
+        const target = tab.dataset.tab;
+        panels.forEach(p => {
+          if (p.dataset.panel === target) p.classList.remove("hidden");
+          else p.classList.add("hidden");
+        });
+      });
+    });
+
+    // ==================== FLASHCARDS (ALL VOCABULARY) ====================
+    const allFlashcards = [];
+    Object.keys(vocabularyData).forEach(category => {
+      vocabularyData[category].forEach(item => {
+        allFlashcards.push({
+          term: item.term,
+          translation: item.translation,
+          meaning: "Meaning: " + item.meaning,
+        });
+      });
+    });
+
+    let currentFlashIndex = 0;
+    const fcTerm = document.getElementById("fc-term");
+    const fcTranslation = document.getElementById("fc-translation");
+    const fcExtra = document.getElementById("fc-extra");
+    const flashNext = document.getElementById("flashNext");
+    const flashPrev = document.getElementById("flashPrev");
+    const flashToggle = document.getElementById("flashToggle");
+
+    function showFlashcard(i) {
+      const card = allFlashcards[i];
+      fcTerm.textContent = card.term;
+      fcTranslation.textContent = card.translation;
+      fcExtra.textContent = card.meaning;
+    }
+
+    flashNext.addEventListener("click", () => {
+      currentFlashIndex = (currentFlashIndex + 1) % allFlashcards.length;
+      showFlashcard(currentFlashIndex);
+    });
+
+    flashPrev.addEventListener("click", () => {
+      currentFlashIndex = (currentFlashIndex - 1 + allFlashcards.length) % allFlashcards.length;
+      showFlashcard(currentFlashIndex);
+    });
+
+    let translationVisible = true;
+    flashToggle.addEventListener("click", () => {
+      translationVisible = !translationVisible;
+      fcTranslation.style.visibility = translationVisible ? "visible" : "hidden";
+      fcExtra.style.visibility = translationVisible ? "visible" : "hidden";
+    });
+
+    showFlashcard(0);
+
+    // ==================== ACTIVITY 1: MATCHING (20 terms) ====================
+    const activity1Data = [
+      { term: "siblings", answer: "hermanos" },
+      { term: "extended family", answer: "familia extensa" },
+      { term: "nuclear family", answer: "familia nuclear" },
+      { term: "uncle", answer: "tio" },
+      { term: "nephew / niece", answer: "sobrino" },
+      { term: "grandson / granddaughter", answer: "nieto" },
+      { term: "cousin", answer: "primo" },
+      { term: "stepfather", answer: "padrastro" },
+      { term: "husband / wife", answer: "marido" },
+      { term: "brother-in-law", answer: "cunado" },
+      { term: "divorced", answer: "divorciado" },
+      { term: "widow / widower", answer: "viuda" },
+      { term: "single parent", answer: "progenitor unico" },
+      { term: "foster family", answer: "familia de acogida" },
+      { term: "generation gap", answer: "diferencia generacional" },
+      { term: "get along", answer: "llevarse bien" },
+      { term: "look up to", answer: "admirar" },
+      { term: "spoil", answer: "consentir" },
+      { term: "take after", answer: "parecerse" },
+      { term: "background", answer: "antecedentes" },
+    ];
+
+    const activity1List = document.getElementById("activity1-list");
+    activity1Data.forEach((item, index) => {
+      const div = document.createElement("div");
+      div.className = "exercise-item";
+      div.innerHTML = `
+        <div><strong>${index + 1}. ${item.term}</strong></div>
+        <input type="text" data-idx="${index}" class="a1-input" placeholder="Type Spanish translation…" style="width:100%; padding:0.5rem; border-radius:6px; border:1px solid #cbd2e1; margin:0.3rem 0;" />
+        <div class="feedback" id="a1-fb-${index}"></div>
+      `;
+      activity1List.appendChild(div);
+    });
+
+    document.getElementById("check1").addEventListener("click", () => {
+      let score = 0;
+      const inputs = document.querySelectorAll(".a1-input");
+      inputs.forEach((input) => {
+        const idx = parseInt(input.dataset.idx, 10);
+        const fb = document.getElementById(`a1-fb-${idx}`);
+        const student = normalize(input.value);
+        const correct = normalize(activity1Data[idx].answer);
+        if (student && student === correct) {
+          score++;
+          fb.textContent = "✓ Correct!";
+          fb.className = "feedback ok";
+        } else {
+          fb.textContent = `✗ Incorrect. Answer: ${activity1Data[idx].answer}`;
+          fb.className = "feedback error";
+        }
+      });
+      document.getElementById("score1").textContent = score;
+    });
+
+    // ==================== ACTIVITY 2: FILL IN THE GAPS (12 items) ====================
+    const activity2Data = [
+      { sentence: "I really ______ my grandmother. She is my role model.", answer: "look up to" },
+      { sentence: "We used to fight a lot, but now we ______ very well.", answer: "get along" },
+      { sentence: "After their argument, they decided to ______ and be friends again.", answer: "make up" },
+      { sentence: "Even after moving to another country, we ______ in touch.", answer: "keep" },
+      { sentence: "My parents always ______ me to follow my dreams.", answer: "encourage" },
+      { sentence: "She had a very strict ______, so she is very disciplined.", answer: "upbringing" },
+      { sentence: "Grandparents sometimes ______ their grandchildren and give them too many presents.", answer: "spoil" },
+      { sentence: "You can always ______ on your family when you have problems.", answer: "rely" },
+      { sentence: "She ______ her mother in looks and personality.", answer: "takes after" },
+      { sentence: "There is sometimes a big ______ gap between teenagers and their parents.", answer: "generation" },
+      { sentence: "My ______ brought me up to be honest and kind.", answer: "parents" },
+      { sentence: "I have a strong ______ with my siblings.", answer: "bond" },
+    ];
+
+    const activity2Box = document.getElementById("activity2-box");
+    const activity2List = document.getElementById("activity2-list");
+
+    const boxTerms = ["look up to", "get along", "make up", "keep in touch", "encourage", "upbringing", "spoil", "rely on", "takes after", "generation", "parents", "bond"];
+    boxTerms.forEach((t) => {
+      const span = document.createElement("span");
+      span.className = "chip";
+      span.textContent = t;
+      activity2Box.appendChild(span);
+    });
+
+    activity2Data.forEach((item, index) => {
+      const div = document.createElement("div");
+      div.className = "exercise-item";
+      div.innerHTML = `
+        <div><strong>${index + 1}.</strong> ${item.sentence}</div>
+        <input type="text" data-idx="${index}" class="a2-input" placeholder="Type the missing word…" style="width:100%; padding:0.5rem; border-radius:6px; border:1px solid #cbd2e1; margin:0.3rem 0;" />
+        <div class="feedback" id="a2-fb-${index}"></div>
+      `;
+      activity2List.appendChild(div);
+    });
+
+    document.getElementById("check2").addEventListener("click", () => {
+      let score = 0;
+      const inputs = document.querySelectorAll(".a2-input");
+      inputs.forEach((input) => {
+        const idx = parseInt(input.dataset.idx, 10);
+        const fb = document.getElementById(`a2-fb-${idx}`);
+        const student = normalize(input.value);
+        const correct = normalize(activity2Data[idx].answer);
+        if (student && student === correct) {
+          score++;
+          fb.textContent = "✓ Correct!";
+          fb.className = "feedback ok";
+        } else {
+          fb.textContent = `✗ Incorrect. Answer: ${activity2Data[idx].answer}`;
+          fb.className = "feedback error";
+        }
+      });
+      document.getElementById("score2").textContent = score;
+    });
+
+    // ==================== ACTIVITY 3: TRANSLATION ES→EN (10 items) ====================
+    const activity3Data = [
+      { spanish: "familia extensa", answers: ["extended family"] },
+      { spanish: "familia nuclear", answers: ["nuclear family"] },
+      { spanish: "mantener el contacto", answers: ["keep in touch"] },
+      { spanish: "parecerse a familiar", answers: ["take after"] },
+      { spanish: "reunión familiar", answers: ["family reunion"] },
+      { spanish: "Discutimos sobre el dinero", answers: ["we argued about money"] },
+      { spanish: "No confío en él", answers: ["i don't trust him", "i dont trust him"] },
+      { spanish: "¿Te llevas bien con tu hermana?", answers: ["do you get along with your sister"] },
+      { spanish: "Mis abuelos me consienten", answers: ["my grandparents spoil me"] },
+      { spanish: "¿A quién se parece?", answers: ["who does he/she take after"] },
+    ];
+
+    const activity3List = document.getElementById("activity3-list");
+    activity3Data.forEach((item, index) => {
+      const div = document.createElement("div");
+      div.className = "exercise-item";
+      div.innerHTML = `
+        <div><strong>${index + 1}.</strong> ${item.spanish}</div>
+        <input type="text" data-idx="${index}" class="a3-input" placeholder="Type in English…" style="width:100%; padding:0.5rem; border-radius:6px; border:1px solid #cbd2e1; margin:0.3rem 0;" />
+        <div class="feedback" id="a3-fb-${index}"></div>
+      `;
+      activity3List.appendChild(div);
+    });
+
+    document.getElementById("check3").addEventListener("click", () => {
+      let score = 0;
+      const inputs = document.querySelectorAll(".a3-input");
+      inputs.forEach((input) => {
+        const idx = parseInt(input.dataset.idx, 10);
+        const fb = document.getElementById(`a3-fb-${idx}`);
+        const student = normalize(input.value);
+        const correctList = activity3Data[idx].answers.map(normalize);
+        if (student && correctList.includes(student)) {
+          score++;
+          fb.textContent = "✓ Correct!";
+          fb.className = "feedback ok";
+        } else {
+          fb.textContent = `✗ Incorrect. Possible answers: ${activity3Data[idx].answers.join(", ")}`;
+          fb.className = "feedback error";
+        }
+      });
+      document.getElementById("score3").textContent = score;
+    });
+
+    // ==================== ACTIVITY 4: SENTENCE TRANSLATION (10 items) ====================
+    const activity4Data = [
+      {
+        spanish: "Mis padres me educaron con valores importantes.",
+        answers: ["my parents brought me up with important values", "my parents raised me with important values", "my parents brought up me with important values"],
+      },
+      {
+        spanish: "Ella admira mucho a su hermana mayor.",
+        answers: ["she looks up to her older sister", "she admires her older sister"],
+      },
+      {
+        spanish: "Nunca pierdo el contacto con mis tíos.",
+        answers: ["i never lose touch with my uncles", "i never lose touch with my aunts", "i always keep in touch with my uncles"],
+      },
+      {
+        spanish: "¿Cuántos hermanos tienes?",
+        answers: ["how many siblings do you have", "how many brothers and sisters do you have"],
+      },
+      {
+        spanish: "Los abuelos siempre consienten a los nietos.",
+        answers: ["grandparents always spoil their grandchildren", "grandparents always pamper the grandchildren"],
+      },
+      {
+        spanish: "No me llevo bien con mi primo.",
+        answers: ["i don't get along with my cousin", "i dont get along with my cousin", "i don't get on well with my cousin"],
+      },
+      {
+        spanish: "Después de pelear, se reconciliaron.",
+        answers: ["after arguing they made up", "after fighting they made up", "after they fell out they made up"],
+      },
+      {
+        spanish: "¿Qué tipo de familia tienes?",
+        answers: ["what kind of family do you have", "what type of family do you have"],
+      },
+      {
+        spanish: "Mi padre me anima a estudiar idiomas.",
+        answers: ["my father encourages me to study languages", "my father motivates me to study languages"],
+      },
+      {
+        spanish: "No confío en lo que dice.",
+        answers: ["i don't trust what he says", "i dont trust what he says", "i don't trust what he/she says"],
+      },
+    ];
+
+    const activity4List = document.getElementById("activity4-list");
+    activity4Data.forEach((item, index) => {
+      const div = document.createElement("div");
+      div.className = "exercise-item";
+      div.innerHTML = `
+        <div><strong>${index + 1}.</strong> ${item.spanish}</div>
+        <input type="text" data-idx="${index}" class="a4-input" placeholder="Type in English…" style="width:100%; padding:0.5rem; border-radius:6px; border:1px solid #cbd2e1; margin:0.3rem 0;" />
+        <div class="feedback" id="a4-fb-${index}"></div>
+      `;
+      activity4List.appendChild(div);
+    });
+
+    document.getElementById("check4").addEventListener("click", () => {
+      let score = 0;
+      const inputs = document.querySelectorAll(".a4-input");
+      inputs.forEach((input) => {
+        const idx = parseInt(input.dataset.idx, 10);
+        const fb = document.getElementById(`a4-fb-${idx}`);
+        const student = normalize(input.value);
+        const correctList = activity4Data[idx].answers.map(normalize);
+        if (student && correctList.includes(student)) {
+          score++;
+          fb.textContent = "✓ Correct!";
+          fb.className = "feedback ok";
+        } else {
+          fb.textContent = `✗ Incorrect. Possible answers: ${activity4Data[idx].answers.join(" / ")}`;
+          fb.className = "feedback error";
+        }
+      });
+      document.getElementById("score4").textContent = score;
+    });
+
+    // ==================== FINAL RESULTS ====================
+    document.getElementById("showFinal").addEventListener("click", () => {
+      const s1 = parseInt(document.getElementById("score1").textContent || "0", 10);
+      const s2 = parseInt(document.getElementById("score2").textContent || "0", 10);
+      const s3 = parseInt(document.getElementById("score3").textContent || "0", 10);
+      const s4 = parseInt(document.getElementById("score4").textContent || "0", 10);
+      const total = s1 + s2 + s3 + s4;
+      document.getElementById("totalPoints").textContent = total;
+
+      const first = firstNameInput.value.trim();
+      const last = lastNameInput.value.trim();
+      const course = courseSelect.value;
+      const summary = first && last && course
+        ? `${first} ${last} · ${course}`
+        : "Student data not complete.";
+      document.getElementById("studentSummary").textContent = summary;
+      document.getElementById("finalResults").classList.remove("hidden");
+      window.scrollTo({ top: document.getElementById("finalResults").offsetTop - 10, behavior: "smooth" });
+    });
+  </script>
+</body>
+</html>
